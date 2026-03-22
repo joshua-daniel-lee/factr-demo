@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #06c0d7;
+  --color-accent: #f77024;
+  --color-blue-chill: #117297;
+  --color-bunting: #1b2356;
+  --color-ironstone: #894a3d;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-roboto), system-ui, sans-serif;
+    color: #1b2356;
+    background: white;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-newsreader), serif;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20;
+  }
+  
+  .glass-dark {
+    background-color: rgba(27, 35, 86, 0.7);
+    @apply backdrop-blur-xl border border-white/10;
+  }
+  
+  /* Enhanced shadows - Clerk style */
+  .shadow-glow-primary {
+    box-shadow: 0 0 20px rgba(6, 192, 215, 0.3), 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .shadow-glow-accent {
+    box-shadow: 0 0 20px rgba(247, 112, 36, 0.3), 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .shadow-soft {
+    box-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.02),
+      0 4px 8px rgba(0, 0, 0, 0.03),
+      0 8px 16px rgba(0, 0, 0, 0.04);
+  }
+  
+  .shadow-elevated {
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.05),
+      0 10px 20px rgba(0, 0, 0, 0.08),
+      0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Animated gradient background */
+  .gradient-animated {
+    background: linear-gradient(-45deg, #06c0d7, #117297, #1b2356, #f77024);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+  
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  /* Hover lift effect */
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.05),
+      0 10px 20px rgba(0, 0, 0, 0.08),
+      0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Focus glow */
+  .focus-glow:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(6, 192, 215, 0.2);
+    border-color: #06c0d7;
+  }
+}
