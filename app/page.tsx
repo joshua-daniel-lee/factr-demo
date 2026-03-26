@@ -6,9 +6,16 @@ import Input from "@/components/Input";
 
 export default function Home() {
   return (
-    <div className="min-h-screen gradient-animated py-12 px-4">
+    <div className="min-h-screen bg-white py-12 px-4">
+      {/* Capstone Project Header */}
+      <div className="text-center mb-8">
+        <h1 className="text-3xl md:text-4xl font-bold text-bunting font-newsreader mb-2">
+          Danyang Wang & Joshua Lee Capstone Project Demo
+        </h1>
+      </div>
+      
       {/* Mobile App Container with glassmorphism */}
-      <div className="mx-auto max-w-md glass rounded-3xl shadow-elevated overflow-hidden">
+      <div className="mx-auto max-w-md glass shadow-elevated overflow-hidden">
         {/* Header with animated gradient */}
         <div className="bg-gradient-to-br from-primary via-blue-chill to-bunting px-6 py-10 text-white relative overflow-hidden">
           {/* Animated background elements */}
@@ -99,8 +106,8 @@ export default function Home() {
               <Button variant="dark">Dark Button</Button>
               <Button variant="outline">Outlined Button</Button>
 
-              {/* Gradient Card with glassmorphism */}
-              <Card variant="gradient" className="relative overflow-hidden">
+              {/* Featured Card with blue-chill background */}
+              <Card variant="gradient" className="relative overflow-hidden !bg-blue-chill !bg-none">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
                 <h3 className="text-xl font-bold mb-2 relative z-10">Featured Card</h3>
                 <p className="text-sm text-white/90 relative z-10">
