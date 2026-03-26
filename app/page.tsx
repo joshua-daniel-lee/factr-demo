@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Sparkles, Mail, Zap, Shield, Palette } from "lucide-react";
+import Link from "next/link";
+import { Sparkles, Mail, Zap, Shield, Palette, LogOut } from "lucide-react";
 import Button from "@/components/Button";
 import Card from "@/components/Card";
 import Input from "@/components/Input";
@@ -7,6 +8,16 @@ import Input from "@/components/Input";
 export default function Home() {
   return (
     <div className="min-h-screen bg-white py-12 px-4">
+      {/* Top Navigation */}
+      <div className="fixed top-0 right-0 p-6 z-50">
+        <Link href="/sign-out">
+          <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-bunting hover:bg-gray-100 rounded-full transition-colors">
+            <LogOut className="w-4 h-4" />
+            Sign Out
+          </button>
+        </Link>
+      </div>
+
       {/* Capstone Project Header */}
       <div className="text-center mb-8">
         <h1 className="text-3xl md:text-4xl font-bold text-bunting font-newsreader mb-2">
