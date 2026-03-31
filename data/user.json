@@ -1,0 +1,12 @@
+{
+  "id": "user_001",
+  "name": "Sarah Chen",
+  "email": "sarah.chen@example.com",
+  "avatar": "/avatars/sarah-chen.jpg",
+  "credits": {
+    "remaining": 67,
+    "total": 100,
+    "used": 33
+  },
+  "plan": "pro"
+}

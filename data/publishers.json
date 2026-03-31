@@ -1,0 +1,50 @@
+[
+  {
+    "id": "nyt",
+    "name": "The New York Times",
+    "logoUrl": "/publishers/nyt-logo.png",
+    "domain": "nytimes.com"
+  },
+  {
+    "id": "wsj",
+    "name": "The Wall Street Journal",
+    "logoUrl": "/publishers/wsj-logo.png",
+    "domain": "wsj.com"
+  },
+  {
+    "id": "wapo",
+    "name": "The Washington Post",
+    "logoUrl": "/publishers/wapo-logo.png",
+    "domain": "washingtonpost.com"
+  },
+  {
+    "id": "atlantic",
+    "name": "The Atlantic",
+    "logoUrl": "/publishers/atlantic-logo.png",
+    "domain": "theatlantic.com"
+  },
+  {
+    "id": "economist",
+    "name": "The Economist",
+    "logoUrl": "/publishers/economist-logo.png",
+    "domain": "economist.com"
+  },
+  {
+    "id": "bloomberg",
+    "name": "Bloomberg",
+    "logoUrl": "/publishers/bloomberg-logo.png",
+    "domain": "bloomberg.com"
+  },
+  {
+    "id": "reuters",
+    "name": "Reuters",
+    "logoUrl": "/publishers/reuters-logo.png",
+    "domain": "reuters.com"
+  },
+  {
+    "id": "ft",
+    "name": "Financial Times",
+    "logoUrl": "/publishers/ft-logo.png",
+    "domain": "ft.com"
+  }
+]
