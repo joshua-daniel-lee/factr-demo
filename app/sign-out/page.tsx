@@ -51,7 +51,7 @@ export default function SignOut() {
           {/* Action Buttons */}
           <div className="space-y-3">
             <Link href="/sign-in" className="block">
-              <Button variant="primary" className="w-full">
+              <Button variant="dark" className="w-full">
                 Sign In Again
               </Button>
             </Link>

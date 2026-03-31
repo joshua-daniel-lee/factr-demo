@@ -12,6 +12,8 @@
 
 **Key Message**: "One Universal Key unlocks all premium journalism - no more subscription juggling."
 
+**Core Concept**: FactrAI is a **control center** for unlocking paywalled content. Users discover, unlock, and are redirected to read on publisher sites. The app focuses on activity tracking, credit management, and unlock history.
+
 ---
 
 ## About FactrAI
@@ -57,90 +59,193 @@ FactrAI is a frictionless, credit-based access layer that utilizes browser-level
 **Demo Flow:**
 
 ```
-1. Dashboard Landing (5 seconds)
+1. Activity Dashboard Landing (5 seconds)
+   - See credit balance, recent unlocks, analytics
    ↓
-2. Browse Trending Articles (10 seconds)
+2. Browse Article Discovery Feed (10 seconds)
+   - Filter by publisher, topic, credit cost
    ↓
-3. Article Selection & Preview (10 seconds)
+3. Article Selection & Preview (5 seconds)
+   - View quick preview, credit cost, publisher info
    ↓
-4. Credit-Based Unlock (5 seconds)
+4. Unlock & Open on Publisher Site (5 seconds)
+   - Credit deducted, article opens in new tab/window
    ↓
-5. Reading Experience (30 seconds)
+5. [EXTERNAL] Reading on Publisher Site (30 seconds)
+   - User reads on NYT, WSJ, Bloomberg, etc.
    ↓
-6. Return to Dashboard (Show updated credits) (10 seconds)
+6. Return to FactrAI Dashboard (10 seconds)
+   - Updated credit balance, article added to "My Library"
 ```
+
+**Key Difference**: Users read content on publisher sites, NOT in the FactrAI app. FactrAI is the unlock mechanism and personal library.
 
 ---
 
 ## Feature Requirements
 
-### 1. Dashboard/Home Screen
+### 1. Activity Dashboard (Primary View)
 
 **Must Have:**
-- **User Profile Widget**
-  - Avatar/initials
-  - Current credit balance prominently displayed
-  - Dropdown menu: Settings, History, Add Credits, Logout
-
-- **Credit Balance Card**
+- **Hero Credit Balance Card**
   - Large display: "67 / 100 credits"
-  - Progress bar visualization
-  - Projection text: "~12 credits remaining by month-end"
-  - CTA button: "Add Credits"
+  - Circular progress visualization
+  - Monthly usage trend sparkline
+  - Projection: "~12 credits remaining by month-end"
+  - Quick "Add Credits" CTA button
 
-- **Article Feed Grid**
-  - Display 6-12 article cards
-  - Filter/Sort toolbar:
-    - Topic dropdown: All, Tech, Finance, Health, Politics
-    - Publisher filter: All Publishers, NYT, WSJ, Bloomberg, etc.
-    - Sort by: Trending, Newest, Lowest Credit Cost
-  - Search bar: "Search articles..."
+- **Recent Activity Feed**
+  - Last 8-10 unlocked articles (scrollable)
+  - Each item shows:
+    - Thumbnail image
+    - Article title (2 lines max)
+    - Publisher logo + name
+    - Unlock date/time ("3 hours ago")
+    - Credits spent badge
+    - "Read Again" button → reopens on publisher site
+    - Link expiration indicator (if applicable)
 
-### 2. Article Card Component
+- **Quick Stats Row**
+  - Articles unlocked this month
+  - Credits spent this month
+  - Most-read publisher
+  - Favorite topic
 
-**Each card includes:**
-- Publisher logo (small, top-left)
-- Article headline (2-3 lines, truncated)
-- Thumbnail image
-- Credit cost badge (color-coded: Green 1-2, Yellow 3-4, Red 5+ credits)
-- Reading time estimate
-- Topic tags
-- Hover effect: Subtle lift animation
+- **User Profile Widget** (top-right)
+  - Avatar/initials
+  - Current credit balance (small)
+  - Dropdown: My Library, Credit History, Settings, Logout
 
-**Interaction**: Click → Opens Article Preview Modal
-
-### 3. Article Preview Modal
-
-**Must Have:**
-- Full article headline
-- Publisher name + logo
-- Author name + publication date
-- **Excerpt preview** (first 2-3 paragraphs)
-- Blur/fade effect at preview cutoff
-- **Unlock CTA**: "Unlock for 3 credits"
-- Credit balance reminder
-- "Save to Reading List" and Share options
-
-### 4. Article Reader Screen
+### 2. My Library / Unlocked Content View
 
 **Must Have:**
-- Full article content (mocked)
-- **FactrAI Header Bar** (sticky):
-  - Back navigation
-  - "Unlocked with FactrAI" badge
-  - Current credit balance
-  - Save and Share buttons
-- Clean reading experience with proper typography
-- "Similar articles" suggestions at bottom
+- **Organization Tabs:**
+  - Recent (default)
+  - By Publisher
+  - By Topic
+  - Active vs Expired
 
-### 5. Credit Transaction System
+- **Search & Filter Bar:**
+  - Search unlocked articles
+  - Date range filter
+  - Publisher multi-select
+  - Topic filter
+
+- **Article List:**
+  - Same format as Recent Activity Feed
+  - Pagination or infinite scroll
+  - Bulk actions: Archive, Delete
+  - Export reading list option
+
+- **Empty State:**
+  - "No unlocked articles yet"
+  - CTA to browse article feed
+
+### 3. Analytics & Insights Panel
+
+**Must Have:**
+- **This Month Overview:**
+  - Total articles unlocked (with % change vs last month)
+  - Total credits spent (with budget comparison)
+  - Cost per article average
+  - Reading frequency chart (daily/weekly)
+
+- **Publisher Breakdown:**
+  - Horizontal bar chart of credits spent per publisher
+  - Article count per publisher
+  - "View all publishers" link
+
+- **Topic Analysis:**
+  - Pie chart or tag cloud of reading topics
+  - Most-read categories
+
+- **Savings Calculator:**
+  - "You saved $127 this month vs individual subscriptions"
+  - Comparison to theoretical subscription costs
+
+- **Time Period Selector:**
+  - This week, This month, Last 3 months, All time
+
+### 4. Article Discovery Feed (Secondary View)
+
+**Must Have:**
+- **Filter/Sort Toolbar:**
+  - Topic dropdown: All, Tech, Finance, Health, Politics
+  - Publisher filter: All Publishers, NYT, WSJ, Bloomberg
+  - Sort by: Trending, Newest, Lowest Credit Cost
+  - Search bar: "Search available articles..."
+
+- **Article Grid** (6-12 cards):
+  - Publisher logo (top-left)
+  - Article headline (2-3 lines)
+  - Thumbnail image
+  - Credit cost badge (color-coded: Green 1-2, Yellow 3-4, Red 5+)
+  - Reading time estimate
+  - Topic tags
+  - Hover: Subtle lift + quick preview tooltip
+
+**Interaction**: Click → Inline Preview Expands
+
+### 5. Article Preview (Inline Expansion)
+
+**Must Have:**
+- Expanded card shows:
+  - Full headline
+  - Publisher name + logo
+  - Author + publication date
+  - Brief excerpt (3-4 sentences)
+  - **Primary CTA**: "Unlock & Open on [Publisher]" (large button)
+  - Credit cost display
+  - Current balance reminder
+  - Badge: "Opens in new tab"
+  - Secondary actions: Save to wishlist, Share
+
+**Post-Unlock Behavior:**
+- Credit deducted
+- Toast notification: "Article unlocked! Opening on [Publisher]..."
+- Opens publisher site in new tab/window
+- Article auto-added to "My Library"
+- Dashboard credit balance updates
+
+### 6. Credit Management Center
+
+**Must Have:**
+- **Current Balance Overview:**
+  - Large credit display
+  - Recharge date (if on recurring plan)
+  - Plan details (Lite vs Pro)
+
+- **Transaction History:**
+  - Scrollable list of all transactions
+  - Filters: All, Unlocks, Purchases, Refunds
+  - Each entry shows:
+    - Date/time
+    - Transaction type
+    - Credits +/- amount
+    - Article details (for unlocks)
+    - Balance after transaction
+
+- **Purchase Credits Section:**
+  - Credit package options ($10 = 20 credits, $25 = 55 credits, etc.)
+  - Payment method on file
+  - Purchase button
+
+- **Referral Credits:**
+  - Referral link + share buttons
+  - Credits earned from referrals
+  - "Invite friends, earn 10 credits each"
+
+### 7. Credit Transaction System
 
 **Must Have:**
 - Real-time credit deduction
 - Animated credit counter update
 - Toast notification on unlock
-- Transaction logged to history
-- Insufficient credits handling
+- Transaction immediately logged to history
+- Insufficient credits handling:
+  - Warning modal if balance < article cost
+  - Direct link to purchase credits
+- Optimistic UI updates (instant feedback)
 
 ---
 
@@ -255,26 +360,45 @@ interface Publisher {
 ```
 factr-demo/
 ├── app/
-│   ├── page.tsx                 # Dashboard/Home
-│   ├── article/[id]/page.tsx    # Article Reader
-│   ├── layout.tsx               # Root layout
-│   └── globals.css              # Global styles
+│   ├── page.tsx                      # Activity Dashboard (primary view)
+│   ├── library/page.tsx              # My Library / Unlocked Content
+│   ├── discover/page.tsx             # Article Discovery Feed
+│   ├── analytics/page.tsx            # Analytics & Insights Panel
+│   ├── credits/page.tsx              # Credit Management Center
+│   ├── sign-in/page.tsx              # Authentication
+│   ├── sign-out/page.tsx             # Sign out confirmation
+│   ├── layout.tsx                    # Root layout
+│   └── globals.css                   # Global styles
 ├── components/
-│   ├── ArticleCard.tsx          # Article card in feed
-│   ├── ArticleModal.tsx         # Preview modal
-│   ├── CreditBalance.tsx        # Credit display widget
-│   ├── ArticleFeed.tsx          # Grid of articles
-│   ├── UserMenu.tsx             # Profile dropdown
-│   ├── Button.tsx               # Reusable button
-│   ├── Card.tsx                 # Reusable card
-│   └── Input.tsx                # Reusable input
+│   ├── ActivityDashboard.tsx         # Main dashboard view
+│   ├── CreditBalanceCard.tsx         # Hero credit display
+│   ├── RecentActivityFeed.tsx        # Recent unlocks list
+│   ├── QuickStats.tsx                # Stats row component
+│   ├── UnlockedArticleList.tsx       # Library list view
+│   ├── AnalyticsPanel.tsx            # Analytics charts
+│   ├── ArticleDiscoveryFeed.tsx      # Article grid for discovery
+│   ├── ArticleCard.tsx               # Article card with "Unlock & Open"
+│   ├── ArticlePreview.tsx            # Inline preview expansion
+│   ├── CreditTransaction.tsx         # Transaction history item
+│   ├── UserMenu.tsx                  # Profile dropdown
+│   ├── Navigation.tsx                # Bottom nav or sidebar
+│   ├── Button.tsx                    # Reusable button
+│   ├── Card.tsx                      # Reusable card
+│   └── Input.tsx                     # Reusable input
 ├── data/
-│   ├── articles.json            # Mock article data
-│   ├── publishers.json          # Mock publisher data
-│   └── user.json                # Mock user data
+│   ├── articles.json                 # Mock article data
+│   ├── publishers.json               # Mock publisher data
+│   ├── user.json                     # Mock user data
+│   └── transactions.json             # Mock transaction history
+├── hooks/
+│   ├── useCredits.ts                 # Credit management hook
+│   └── useArticleUnlock.ts           # Unlock logic hook
+├── lib/
+│   ├── utils.ts                      # Utility functions
+│   └── mockData.ts                   # Mock data helpers
 ├── public/
-│   └── logo.png                 # FactrAI logo
-└── README.md                    # This file
+│   └── logo.png                      # FactrAI logo
+└── README.md                         # This file
 ```
 
 ---
@@ -287,17 +411,21 @@ factr-demo/
 - ✅ Credit balance display
 - ✅ Basic mock data
 
-### Phase 2: Interactions (Week 2)
-- 🔄 Article preview modal
-- 🔄 Unlock functionality
+### Phase 2: Core Interactions (Week 2)
+- 🔄 Activity Dashboard with recent unlocks
+- 🔄 Article Discovery Feed with filters
+- 🔄 Inline article preview expansion
+- 🔄 Unlock & redirect functionality
 - 🔄 Credit deduction logic
-- 🔄 Article reader page
+- 🔄 My Library view
 
-### Phase 3: Polish (Week 3)
+### Phase 3: Analytics & Polish (Week 3)
+- ⏳ Analytics panel with charts
+- ⏳ Credit Management Center
+- ⏳ Transaction history
 - ⏳ Animations & transitions
 - ⏳ Responsive design
-- ⏳ Loading states
-- ⏳ Error handling
+- ⏳ Loading states & error handling
 - ⏳ Final mock data integration
 
 ---
@@ -306,14 +434,22 @@ factr-demo/
 
 Not including in this demo:
 - User registration/onboarding flow
-- Payment processing (add credits)
-- Social features (comments, sharing)
-- Mobile app
-- Browser extension
-- Publisher dashboard
-- Advanced search/filtering
-- User settings/preferences
+- Payment processing (add credits) - mocked with UI only
+- Actual integration with publisher sites - simulated redirects
+- Browser extension for inline paywall detection
+- Publisher dashboard/analytics
+- Social features (comments, community)
+- Advanced search/filtering (semantic search)
+- User settings/preferences (reading goals, notifications)
 - Reading history export
+- Mobile native app
+- **In-app reading experience** - Users read on publisher sites, NOT in FactrAI
+
+**Intentional Design Decision**: FactrAI is a control center and unlock mechanism, not a reading platform. Articles open on their native publisher sites to preserve:
+- Publisher brand experience
+- Native article layouts and multimedia
+- Publisher analytics/engagement data
+- User familiarity with trusted news sources
 
 ---
 
