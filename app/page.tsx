@@ -2,6 +2,7 @@
 
 import AppShell from "@/components/AppShell";
 import Card from "@/components/Card";
+import Image from "next/image";
 import { Sparkles, TrendingUp, Clock, DollarSign, BookOpen } from "lucide-react";
 import { useApp } from "@/contexts/AppContext";
 import { getUnlockedArticles, getTotalCreditsSpent } from "@/lib/mockData";
@@ -23,9 +24,11 @@ export default function Home() {
     <AppShell title="Dashboard">
       <div className="p-6 md:p-8 space-y-8">
         {/* Welcome Section */}
-        <div className="bg-gradient-to-br from-primary via-blue-chill to-bunting rounded-2xl p-8 text-white relative overflow-hidden">
+        <div className="bg-gradient-to-br from-primary via-blue-chill to-bunting rounded-2xl p-8 text-white relative overflow-hidden h-[160px] flex items-center">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="relative z-10">
+          
+          {/* Left: Content (2/3) */}
+          <div className="flex-1 relative z-10">
             <div className="flex items-center gap-2 mb-2">
               <Sparkles className="w-5 h-5" />
               <span className="text-sm font-medium">Welcome back</span>
@@ -34,6 +37,16 @@ export default function Home() {
             <p className="text-white/80">
               Your Universal Key is active. Continue exploring premium journalism.
             </p>
+          </div>
+          
+          {/* Right: Headline Image (1/4) */}
+          <div className="hidden md:block absolute right-0 top-0 bottom-0 w-1/4 z-10">
+            <Image 
+              src="/headline.png"
+              alt="Featured journalism"
+              fill
+              className="object-cover rounded-r-2xl"
+            />
           </div>
         </div>
 

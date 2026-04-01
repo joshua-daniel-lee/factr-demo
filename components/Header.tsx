@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Coins, Menu, X } from 'lucide-react';
+import { useApp } from '@/contexts/AppContext';
 import UserMenu from './UserMenu';
 
 interface HeaderProps {
@@ -12,15 +13,8 @@ interface HeaderProps {
   sidebarOpen?: boolean;
 }
 
-// Mock user data - will be replaced with context/props later
-const mockUser = {
-  name: 'Sarah Chen',
-  email: 'sarah.chen@example.com',
-  avatar: undefined,
-  credits: 67,
-};
-
 export default function Header({ title, showLogo = false, onMenuClick, sidebarOpen = false }: HeaderProps) {
+  const { user } = useApp();
   return (
     <header className="sticky top-0 z-40 h-16 bg-white/80 backdrop-blur-xl border-b border-gray-200">
       <div className="h-full px-6 flex items-center justify-between relative">
@@ -67,12 +61,17 @@ export default function Header({ title, showLogo = false, onMenuClick, sidebarOp
           <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-primary/10 to-blue-chill/10 rounded-full">
             <Coins className="w-4 h-4 text-primary" />
             <span className="text-sm font-semibold text-bunting">
-              {mockUser.credits}
+              {user.credits.remaining}
             </span>
           </div>
 
           {/* User Menu */}
-          <UserMenu user={mockUser} />
+          <UserMenu user={{
+            name: user.name,
+            email: user.email,
+            avatar: user.avatar,
+            credits: user.credits.remaining
+          }} />
         </div>
       </div>
     </header>

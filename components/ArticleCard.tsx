@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Clock, TrendingUp, Lock, CheckCircle } from 'lucide-react';
+import { Clock, TrendingUp, Lock, CheckCircle, Coins } from 'lucide-react';
 import { Article } from '@/types';
 import { getPublisherById, isArticleUnlocked } from '@/lib/mockData';
 import { useApp } from '@/contexts/AppContext';
@@ -34,13 +34,6 @@ export default function ArticleCard({ article, onUnlock }: ArticleCardProps) {
     year: 'numeric',
   });
 
-  // Get credit cost badge variant
-  const getCreditVariant = (cost: number) => {
-    if (cost <= 2) return 'success';
-    if (cost <= 3) return 'warning';
-    return 'danger';
-  };
-
   return (
     <Card variant="default" className="group hover-lift overflow-hidden h-full flex flex-col">
       {/* Thumbnail */}
@@ -69,6 +62,19 @@ export default function ArticleCard({ article, onUnlock }: ArticleCardProps) {
               <CheckCircle className="w-3 h-3" />
               Unlocked
             </Badge>
+          </div>
+        )}
+
+        {/* Publisher Logo Badge */}
+        {publisher && (
+          <div className="absolute bottom-3 left-3 bg-white/95 backdrop-blur-sm rounded-lg p-2 shadow-sm">
+            <Image
+              src={publisher.logoUrl}
+              alt={publisher.name}
+              width={32}
+              height={32}
+              className="object-contain"
+            />
           </div>
         )}
       </div>
@@ -118,11 +124,13 @@ export default function ArticleCard({ article, onUnlock }: ArticleCardProps) {
         )}
 
         {/* Action */}
-        <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-          <div className="flex items-center gap-2">
-            <Badge variant={getCreditVariant(article.creditCost)} size="md">
-              {article.creditCost} {article.creditCost === 1 ? 'Credit' : 'Credits'}
-            </Badge>
+        <div className="flex items-center justify-between gap-6 pt-4 border-t border-gray-100">
+          {/* Credit Cost Pill */}
+          <div className="flex items-center gap-2 px-3 py-1.5 bg-primary/10 rounded-full">
+            <Coins className="w-4 h-4 text-primary" />
+            <span className="text-sm font-semibold text-primary">
+              {article.creditCost}
+            </span>
           </div>
           
           {!unlocked ? (
