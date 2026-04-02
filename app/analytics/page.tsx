@@ -1,25 +1,44 @@
+'use client';
+
+import { useState } from 'react';
 import AppShell from "@/components/AppShell";
-import Card from "@/components/Card";
-import { BarChart3 } from "lucide-react";
+import TimePeriodSelector from "@/components/TimePeriodSelector";
+import OverviewStatsGrid from "@/components/OverviewStatsGrid";
+import PublisherBreakdownChart from "@/components/PublisherBreakdownChart";
+import TopicAnalysisChart from "@/components/TopicAnalysisChart";
+import SavingsCalculator from "@/components/SavingsCalculator";
+import { TimePeriod } from "@/types";
+import { getAnalytics } from "@/lib/mockData";
 
 export default function AnalyticsPage() {
+  const [selectedPeriod, setSelectedPeriod] = useState<TimePeriod>('thisMonth');
+  const analyticsData = getAnalytics(selectedPeriod);
+
   return (
     <AppShell title="Analytics">
-      <div className="p-6 md:p-8">
-        <Card variant="default">
-          <div className="text-center py-16">
-            <BarChart3 className="w-16 h-16 text-primary mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-bunting mb-2 font-newsreader">
-              Analytics & Insights
-            </h2>
-            <p className="text-gray-600">
-              Track your reading patterns, spending, and savings
-            </p>
-            <p className="text-sm text-gray-500 mt-4">
-              This page will be implemented in Phase 4
-            </p>
-          </div>
-        </Card>
+      <div className="p-6 md:p-8 space-y-8">
+        {/* Time Period Selector */}
+        <div className="flex justify-between items-center">
+          <h2 className="text-2xl font-bold text-bunting font-newsreader">
+            Analytics & Insights
+          </h2>
+          <TimePeriodSelector
+            selected={selectedPeriod}
+            onChange={setSelectedPeriod}
+          />
+        </div>
+
+        {/* Overview Stats Grid */}
+        <OverviewStatsGrid data={analyticsData.overview} />
+
+        {/* Charts Row */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <PublisherBreakdownChart data={analyticsData.publisherBreakdown} />
+          <TopicAnalysisChart data={analyticsData.topicAnalysis} />
+        </div>
+
+        {/* Savings Calculator */}
+        <SavingsCalculator data={analyticsData.savings} />
       </div>
     </AppShell>
   );

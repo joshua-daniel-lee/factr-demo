@@ -1,8 +1,9 @@
-import { User, Publisher, Article, Transaction } from '@/types';
+import { User, Publisher, Article, Transaction, AnalyticsData, AnalyticsPeriodData, TimePeriod } from '@/types';
 import userData from '@/data/user.json';
 import publishersData from '@/data/publishers.json';
 import articlesData from '@/data/articles.json';
 import transactionsData from '@/data/transactions.json';
+import analyticsData from '@/data/analytics.json';
 
 // Get current user
 export function getUser(): User {
@@ -107,4 +108,15 @@ export function getTotalCreditsPurchased(): number {
   return transactionsData
     .filter((t) => t.type === 'purchase')
     .reduce((sum, t) => sum + t.credits, 0);
+}
+
+// Get analytics data for a specific time period
+export function getAnalytics(period: TimePeriod = 'thisMonth'): AnalyticsData {
+  const data = analyticsData as AnalyticsPeriodData;
+  return data[period];
+}
+
+// Get all analytics data
+export function getAllAnalytics(): AnalyticsPeriodData {
+  return analyticsData as AnalyticsPeriodData;
 }

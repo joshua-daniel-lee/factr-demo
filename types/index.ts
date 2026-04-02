@@ -58,3 +58,56 @@ export interface AppState {
   user: User;
   isLoading: boolean;
 }
+
+// Analytics Types
+export type TimePeriod = 'thisWeek' | 'thisMonth' | 'last3Months' | 'allTime';
+
+export interface StatMetric {
+  current: number;
+  previous: number;
+  percentChange: number;
+}
+
+export interface AnalyticsOverview {
+  articlesUnlocked: StatMetric;
+  creditsSpent: StatMetric;
+  avgCostPerArticle: StatMetric;
+  readingFrequency: StatMetric;
+}
+
+export interface PublisherBreakdown {
+  publisherId: string;
+  publisherName: string;
+  creditsSpent: number;
+  articleCount: number;
+}
+
+export interface TopicAnalysis {
+  topic: string;
+  articleCount: number;
+  percentage: number;
+}
+
+export interface SubscriptionCost {
+  publisher: string;
+  monthlyCost: number;
+}
+
+export interface SavingsData {
+  totalSaved: number;
+  subscriptionCosts: SubscriptionCost[];
+}
+
+export interface AnalyticsData {
+  overview: AnalyticsOverview;
+  publisherBreakdown: PublisherBreakdown[];
+  topicAnalysis: TopicAnalysis[];
+  savings: SavingsData;
+}
+
+export interface AnalyticsPeriodData {
+  thisWeek: AnalyticsData;
+  thisMonth: AnalyticsData;
+  last3Months: AnalyticsData;
+  allTime: AnalyticsData;
+}

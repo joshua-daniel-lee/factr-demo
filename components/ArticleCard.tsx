@@ -71,8 +71,8 @@ export default function ArticleCard({ article, onUnlock }: ArticleCardProps) {
             <Image
               src={publisher.logoUrl}
               alt={publisher.name}
-              width={32}
-              height={32}
+              width={publisher.id === 'nyt' ? 40 : 32}
+              height={publisher.id === 'nyt' ? 40 : 32}
               className="object-contain"
             />
           </div>

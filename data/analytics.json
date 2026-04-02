@@ -1,0 +1,193 @@
+{
+  "thisWeek": {
+    "overview": {
+      "articlesUnlocked": {
+        "current": 5,
+        "previous": 3,
+        "percentChange": 66.7
+      },
+      "creditsSpent": {
+        "current": 18,
+        "previous": 12,
+        "percentChange": 50.0
+      },
+      "avgCostPerArticle": {
+        "current": 3.6,
+        "previous": 4.0,
+        "percentChange": -10.0
+      },
+      "readingFrequency": {
+        "current": 5,
+        "previous": 3,
+        "percentChange": 66.7
+      }
+    },
+    "publisherBreakdown": [
+      { "publisherId": "nyt", "publisherName": "The New York Times", "creditsSpent": 8, "articleCount": 2 },
+      { "publisherId": "wsj", "publisherName": "The Wall Street Journal", "creditsSpent": 5, "articleCount": 1 },
+      { "publisherId": "bloomberg", "publisherName": "Bloomberg", "creditsSpent": 3, "articleCount": 1 },
+      { "publisherId": "atlantic", "publisherName": "The Atlantic", "creditsSpent": 2, "articleCount": 1 }
+    ],
+    "topicAnalysis": [
+      { "topic": "AI & Technology", "articleCount": 2, "percentage": 40 },
+      { "topic": "Finance & Markets", "articleCount": 2, "percentage": 40 },
+      { "topic": "Business Strategy", "articleCount": 1, "percentage": 20 }
+    ],
+    "savings": {
+      "totalSaved": 25,
+      "subscriptionCosts": [
+        { "publisher": "The New York Times", "monthlyCost": 17 },
+        { "publisher": "The Wall Street Journal", "monthlyCost": 39 }
+      ]
+    }
+  },
+  "thisMonth": {
+    "overview": {
+      "articlesUnlocked": {
+        "current": 33,
+        "previous": 28,
+        "percentChange": 17.9
+      },
+      "creditsSpent": {
+        "current": 115,
+        "previous": 98,
+        "percentChange": 17.3
+      },
+      "avgCostPerArticle": {
+        "current": 3.5,
+        "previous": 3.5,
+        "percentChange": 0.0
+      },
+      "readingFrequency": {
+        "current": 8,
+        "previous": 7,
+        "percentChange": 14.3
+      }
+    },
+    "publisherBreakdown": [
+      { "publisherId": "nyt", "publisherName": "The New York Times", "creditsSpent": 32, "articleCount": 9 },
+      { "publisherId": "wsj", "publisherName": "The Wall Street Journal", "creditsSpent": 28, "articleCount": 7 },
+      { "publisherId": "bloomberg", "publisherName": "Bloomberg", "creditsSpent": 24, "articleCount": 6 },
+      { "publisherId": "economist", "publisherName": "The Economist", "creditsSpent": 15, "articleCount": 3 },
+      { "publisherId": "atlantic", "publisherName": "The Atlantic", "creditsSpent": 10, "articleCount": 5 },
+      { "publisherId": "reuters", "publisherName": "Reuters", "creditsSpent": 6, "articleCount": 3 }
+    ],
+    "topicAnalysis": [
+      { "topic": "AI & Technology", "articleCount": 12, "percentage": 36 },
+      { "topic": "Finance & Markets", "articleCount": 10, "percentage": 30 },
+      { "topic": "Business Strategy", "articleCount": 6, "percentage": 18 },
+      { "topic": "Health & Science", "articleCount": 3, "percentage": 9 },
+      { "topic": "Politics", "articleCount": 2, "percentage": 6 }
+    ],
+    "savings": {
+      "totalSaved": 127,
+      "subscriptionCosts": [
+        { "publisher": "The New York Times", "monthlyCost": 17 },
+        { "publisher": "The Wall Street Journal", "monthlyCost": 39 },
+        { "publisher": "Bloomberg", "monthlyCost": 39 },
+        { "publisher": "The Economist", "monthlyCost": 12 },
+        { "publisher": "The Atlantic", "monthlyCost": 8 }
+      ]
+    }
+  },
+  "last3Months": {
+    "overview": {
+      "articlesUnlocked": {
+        "current": 89,
+        "previous": 72,
+        "percentChange": 23.6
+      },
+      "creditsSpent": {
+        "current": 312,
+        "previous": 256,
+        "percentChange": 21.9
+      },
+      "avgCostPerArticle": {
+        "current": 3.5,
+        "previous": 3.6,
+        "percentChange": -2.8
+      },
+      "readingFrequency": {
+        "current": 7,
+        "previous": 6,
+        "percentChange": 16.7
+      }
+    },
+    "publisherBreakdown": [
+      { "publisherId": "nyt", "publisherName": "The New York Times", "creditsSpent": 88, "articleCount": 24 },
+      { "publisherId": "wsj", "publisherName": "The Wall Street Journal", "creditsSpent": 76, "articleCount": 19 },
+      { "publisherId": "bloomberg", "publisherName": "Bloomberg", "creditsSpent": 64, "articleCount": 16 },
+      { "publisherId": "economist", "publisherName": "The Economist", "creditsSpent": 40, "articleCount": 8 },
+      { "publisherId": "atlantic", "publisherName": "The Atlantic", "creditsSpent": 26, "articleCount": 13 },
+      { "publisherId": "reuters", "publisherName": "Reuters", "creditsSpent": 18, "articleCount": 9 }
+    ],
+    "topicAnalysis": [
+      { "topic": "AI & Technology", "articleCount": 32, "percentage": 36 },
+      { "topic": "Finance & Markets", "articleCount": 27, "percentage": 30 },
+      { "topic": "Business Strategy", "articleCount": 16, "percentage": 18 },
+      { "topic": "Health & Science", "articleCount": 9, "percentage": 10 },
+      { "topic": "Politics", "articleCount": 5, "percentage": 6 }
+    ],
+    "savings": {
+      "totalSaved": 336,
+      "subscriptionCosts": [
+        { "publisher": "The New York Times", "monthlyCost": 17 },
+        { "publisher": "The Wall Street Journal", "monthlyCost": 39 },
+        { "publisher": "Bloomberg", "monthlyCost": 39 },
+        { "publisher": "The Economist", "monthlyCost": 12 },
+        { "publisher": "The Atlantic", "monthlyCost": 8 },
+        { "publisher": "Reuters", "monthlyCost": 0 }
+      ]
+    }
+  },
+  "allTime": {
+    "overview": {
+      "articlesUnlocked": {
+        "current": 156,
+        "previous": 89,
+        "percentChange": 75.3
+      },
+      "creditsSpent": {
+        "current": 548,
+        "previous": 312,
+        "percentChange": 75.6
+      },
+      "avgCostPerArticle": {
+        "current": 3.5,
+        "previous": 3.5,
+        "percentChange": 0.0
+      },
+      "readingFrequency": {
+        "current": 6,
+        "previous": 5,
+        "percentChange": 20.0
+      }
+    },
+    "publisherBreakdown": [
+      { "publisherId": "nyt", "publisherName": "The New York Times", "creditsSpent": 156, "articleCount": 42 },
+      { "publisherId": "wsj", "publisherName": "The Wall Street Journal", "creditsSpent": 132, "articleCount": 33 },
+      { "publisherId": "bloomberg", "publisherName": "Bloomberg", "creditsSpent": 112, "articleCount": 28 },
+      { "publisherId": "economist", "publisherName": "The Economist", "creditsSpent": 70, "articleCount": 14 },
+      { "publisherId": "atlantic", "publisherName": "The Atlantic", "creditsSpent": 46, "articleCount": 23 },
+      { "publisherId": "reuters", "publisherName": "Reuters", "creditsSpent": 32, "articleCount": 16 }
+    ],
+    "topicAnalysis": [
+      { "topic": "AI & Technology", "articleCount": 56, "percentage": 36 },
+      { "topic": "Finance & Markets", "articleCount": 47, "percentage": 30 },
+      { "topic": "Business Strategy", "articleCount": 28, "percentage": 18 },
+      { "topic": "Health & Science", "articleCount": 16, "percentage": 10 },
+      { "topic": "Politics", "articleCount": 9, "percentage": 6 }
+    ],
+    "savings": {
+      "totalSaved": 592,
+      "subscriptionCosts": [
+        { "publisher": "The New York Times", "monthlyCost": 17 },
+        { "publisher": "The Wall Street Journal", "monthlyCost": 39 },
+        { "publisher": "Bloomberg", "monthlyCost": 39 },
+        { "publisher": "The Economist", "monthlyCost": 12 },
+        { "publisher": "The Atlantic", "monthlyCost": 8 },
+        { "publisher": "Reuters", "monthlyCost": 0 }
+      ]
+    }
+  }
+}
