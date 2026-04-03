@@ -1,0 +1,12 @@
+{
+  "id": "user_001",
+  "name": "Danyang Wang",
+  "email": "danyang.wang@example.com",
+  "avatar": "/avatar.png",
+  "credits": {
+    "remaining": 67,
+    "total": 100,
+    "used": 33
+  },
+  "plan": "pro"
+}

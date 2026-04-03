@@ -1,178 +1,132 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Sparkles, Mail, Zap, Shield, Palette, LogOut } from "lucide-react";
-import Button from "@/components/Button";
+'use client';
+
+import AppShell from "@/components/AppShell";
 import Card from "@/components/Card";
-import Input from "@/components/Input";
+import Image from "next/image";
+import { Sparkles, TrendingUp, Clock, DollarSign, BookOpen } from "lucide-react";
+import { useApp } from "@/contexts/AppContext";
+import { getUnlockedArticles, getTotalCreditsSpent } from "@/lib/mockData";
+import ArticleCard from "@/components/ArticleCard";
 
 export default function Home() {
+  const { user } = useApp();
+  const unlockedArticles = getUnlockedArticles();
+  const totalSpent = getTotalCreditsSpent();
+  const recentArticles = unlockedArticles.slice(0, 3);
+
+  // Calculate reading time (rough estimate: 8 min avg per article)
+  const totalReadingTime = (unlockedArticles.length * 8) / 60;
+
+  // Calculate savings (assuming $5 avg per article unlock)
+  const savings = unlockedArticles.length * 5;
+
   return (
-    <div className="min-h-screen bg-white py-12 px-4">
-      {/* Top Navigation */}
-      <div className="fixed top-0 right-0 p-6 z-50">
-        <Link href="/sign-out">
-          <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-bunting hover:bg-gray-100 rounded-full transition-colors">
-            <LogOut className="w-4 h-4" />
-            Sign Out
-          </button>
-        </Link>
-      </div>
-
-      {/* Capstone Project Header */}
-      <div className="text-center mb-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-bunting font-newsreader mb-2">
-          Danyang Wang & Joshua Lee Capstone Project Demo
-        </h1>
-      </div>
-      
-      {/* Mobile App Container with glassmorphism */}
-      <div className="mx-auto max-w-md glass shadow-elevated overflow-hidden">
-        {/* Header with animated gradient */}
-        <div className="bg-gradient-to-br from-primary via-blue-chill to-bunting px-6 py-10 text-white relative overflow-hidden">
-          {/* Animated background elements */}
+    <AppShell title="Dashboard">
+      <div className="p-6 md:p-8 space-y-8">
+        {/* Welcome Section */}
+        <div className="bg-gradient-to-br from-bunting via-primary via-gray-300 to-white rounded-2xl p-8 text-white relative overflow-hidden h-[160px] flex items-center">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 rounded-full blur-3xl"></div>
           
-          <div className="relative z-10">
-            <div className="flex items-center justify-center mb-6 animate-[float_3s_ease-in-out_infinite]">
-              <div className="relative">
-                <div className="absolute inset-0 bg-white/20 rounded-2xl blur-xl"></div>
-                <Image
-                  src="/logo.png"
-                  alt="Factr Logo"
-                  width={100}
-                  height={100}
-                  className="rounded-2xl relative z-10 shadow-2xl"
-                />
-              </div>
+          {/* Left: Content (2/3) */}
+          <div className="flex-1 relative z-10">
+            <div className="flex items-center gap-2 mb-2">
+              <Sparkles className="w-5 h-5" />
+              <span className="text-sm font-medium">Welcome back</span>
             </div>
-            <h1 className="text-4xl font-bold text-center mb-2">Design System</h1>
-            <p className="text-sm text-center text-white/80 flex items-center justify-center gap-2">
-              <Sparkles className="w-4 h-4" />
-              Modern Mobile App Demo
+            <h2 className="text-3xl font-bold mb-2 font-newsreader">{user.name}</h2>
+            <p className="text-white/80">
+              Your Universal Key is active. Continue exploring premium journalism.
             </p>
+          </div>
+          
+          {/* Right: Headline Image (1/8) */}
+          <div className="hidden md:block absolute right-0 top-0 bottom-0 w-[12.5%] z-10">
+            <Image 
+              src="/headline.svg"
+              alt="Featured journalism"
+              fill
+              className="object-cover rounded-r-2xl"
+            />
           </div>
         </div>
 
-        {/* Content */}
-        <div className="px-6 py-8 space-y-8 bg-gradient-to-b from-white/50 to-white/80 backdrop-blur-sm">
-          {/* Typography Section */}
-          <section className="space-y-4">
-            <div className="flex items-center gap-2">
-              <Palette className="w-5 h-5 text-primary" />
-              <h2 className="text-2xl font-bold text-bunting">Typography</h2>
-            </div>
-            <Card variant="glass" className="space-y-3">
-              <div className="text-4xl font-bold text-bunting leading-tight">
-                Display - Newsreader
+        {/* Quick Stats */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Card variant="default" className="hover-lift">
+            <div className="flex items-start justify-between">
+              <div>
+                <div className="text-sm text-gray-600 mb-1">Articles Unlocked</div>
+                <div className="text-2xl font-bold text-bunting">{unlockedArticles.length}</div>
+                <div className="text-xs text-gray-500 mt-1">All time</div>
               </div>
-              <div className="text-3xl font-bold text-bunting">Heading 1</div>
-              <div className="text-2xl font-bold text-bunting">Heading 2</div>
-              <div className="text-xl font-bold text-bunting">Heading 3</div>
-              <div className="text-base font-medium text-bunting">Subheading - Roboto</div>
-              <div className="text-sm text-gray-700">Body Text - Roboto Regular</div>
-              <div className="text-xs text-gray-500">Caption - Roboto</div>
-            </Card>
-          </section>
-
-          {/* Colors Section */}
-          <section className="space-y-4">
-            <div className="flex items-center gap-2">
-              <Zap className="w-5 h-5 text-accent" />
-              <h2 className="text-2xl font-bold text-bunting">Color Palette</h2>
+              <BookOpen className="w-8 h-8 text-primary" />
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2 group cursor-pointer">
-                <div className="bg-primary h-28 rounded-2xl shadow-glow-primary transition-all duration-300 group-hover:scale-105"></div>
-                <p className="text-xs font-semibold text-gray-700 text-center">Robin's Egg</p>
-                <p className="text-xs text-gray-500 text-center font-mono">#06C0D7</p>
+          </Card>
+
+          <Card variant="default" className="hover-lift">
+            <div className="flex items-start justify-between">
+              <div>
+                <div className="text-sm text-gray-600 mb-1">Credits Remaining</div>
+                <div className="text-2xl font-bold text-bunting">{user.credits.remaining}</div>
+                <div className="text-xs text-gray-500 mt-1">of {user.credits.total} total</div>
               </div>
-              <div className="space-y-2 group cursor-pointer">
-                <div className="bg-accent h-28 rounded-2xl shadow-glow-accent transition-all duration-300 group-hover:scale-105"></div>
-                <p className="text-xs font-semibold text-gray-700 text-center">Ecstasy</p>
-                <p className="text-xs text-gray-500 text-center font-mono">#F77024</p>
+              <DollarSign className="w-8 h-8 text-accent" />
+            </div>
+          </Card>
+
+          <Card variant="default" className="hover-lift">
+            <div className="flex items-start justify-between">
+              <div>
+                <div className="text-sm text-gray-600 mb-1">Reading Time</div>
+                <div className="text-2xl font-bold text-bunting">{totalReadingTime.toFixed(1)}h</div>
+                <div className="text-xs text-gray-500 mt-1">estimated</div>
               </div>
-              <div className="space-y-2 group cursor-pointer">
-                <div className="bg-blue-chill h-28 rounded-2xl shadow-soft transition-all duration-300 group-hover:scale-105"></div>
-                <p className="text-xs font-semibold text-gray-700 text-center">Blue Chill</p>
-                <p className="text-xs text-gray-500 text-center font-mono">#117297</p>
+              <Clock className="w-8 h-8 text-blue-chill" />
+            </div>
+          </Card>
+
+          <Card variant="default" className="hover-lift">
+            <div className="flex items-start justify-between">
+              <div>
+                <div className="text-sm text-gray-600 mb-1">Saved</div>
+                <div className="text-2xl font-bold text-bunting">${savings}</div>
+                <div className="text-xs text-green-600 mt-1">vs subscriptions</div>
               </div>
-              <div className="space-y-2 group cursor-pointer">
-                <div className="bg-bunting h-28 rounded-2xl shadow-soft transition-all duration-300 group-hover:scale-105"></div>
-                <p className="text-xs font-semibold text-gray-700 text-center">Bunting</p>
-                <p className="text-xs text-gray-500 text-center font-mono">#1B2356</p>
-              </div>
+              <Sparkles className="w-8 h-8 text-bunting" />
             </div>
-          </section>
+          </Card>
+        </div>
 
-          {/* Components Section */}
-          <section className="space-y-4">
-            <div className="flex items-center gap-2">
-              <Shield className="w-5 h-5 text-bunting" />
-              <h2 className="text-2xl font-bold text-bunting">Components</h2>
-            </div>
-            <div className="space-y-4">
-              <Button variant="primary">Primary Button</Button>
-              <Button variant="accent">Accent Button</Button>
-              <Button variant="dark">Dark Button</Button>
-              <Button variant="outline">Outlined Button</Button>
-
-              {/* Featured Card with blue-chill background */}
-              <Card variant="gradient" className="relative overflow-hidden !bg-blue-chill !bg-none">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
-                <h3 className="text-xl font-bold mb-2 relative z-10">Featured Card</h3>
-                <p className="text-sm text-white/90 relative z-10">
-                  Beautiful gradient card with glassmorphism effects, inspired by modern design systems like Clerk.
-                </p>
-              </Card>
-
-              {/* Glass Card */}
-              <Card variant="glass">
-                <h3 className="text-lg font-bold text-bunting mb-2">Glass Card</h3>
-                <p className="text-sm text-gray-600">
-                  Frosted glass effect with backdrop blur for a premium feel.
-                </p>
-              </Card>
-
-              {/* Standard Card */}
-              <Card variant="default">
-                <h3 className="text-lg font-bold text-bunting mb-2">Standard Card</h3>
-                <p className="text-sm text-gray-600">
-                  Clean card with subtle shadows and hover lift effect.
-                </p>
-              </Card>
-
-              {/* Input with Icon */}
-              <Input 
-                label="Email Address" 
-                type="email" 
-                placeholder="you@example.com"
-                icon={<Mail className="w-5 h-5" />}
-              />
-              
-              <Input 
-                label="Full Name" 
-                type="text" 
-                placeholder="John Doe"
-              />
-            </div>
-          </section>
-
-          {/* Footer with badge */}
-          <div className="text-center pt-6 border-t border-gray-200">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-xs font-medium mb-3">
-              <Sparkles className="w-3 h-3" />
-              Design System v2.0
-            </div>
-            <p className="text-xs text-gray-500">
-              Built with Next.js, Tailwind CSS, Newsreader & Roboto
-            </p>
-            <p className="text-xs text-gray-400 mt-1">
-              Featuring glassmorphism, animations, and Clerk-inspired design
-            </p>
+        {/* Recent Activity */}
+        <div>
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-2xl font-bold text-bunting font-newsreader">
+              Recently Unlocked
+            </h3>
+            {unlockedArticles.length > 3 && (
+              <a href="/library" className="text-sm font-medium text-primary hover:text-blue-chill">
+                View all →
+              </a>
+            )}
           </div>
+          
+          {recentArticles.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {recentArticles.map((article) => (
+                <ArticleCard key={article.id} article={article} />
+              ))}
+            </div>
+          ) : (
+            <Card variant="default">
+              <div className="text-center py-12 text-gray-500">
+                <BookOpen className="w-12 h-12 mx-auto mb-4 text-gray-400" />
+                <p className="mb-2">No articles unlocked yet</p>
+                <p className="text-sm">Start exploring to see your reading history</p>
+              </div>
+            </Card>
+          )}
         </div>
       </div>
-    </div>
+    </AppShell>
   );
 }

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Newsreader, Roboto } from "next/font/google";
 import "./globals.css";
+import { ToastProvider } from "@/components/Toast";
+import { AppProvider } from "@/contexts/AppContext";
 
 const newsreader = Newsreader({
   subsets: ["latin"],
@@ -25,7 +27,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${newsreader.variable} ${roboto.variable}`}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <ToastProvider>
+          <AppProvider>{children}</AppProvider>
+        </ToastProvider>
+      </body>
     </html>
   );
 }
