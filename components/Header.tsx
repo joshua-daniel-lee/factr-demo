@@ -35,7 +35,7 @@ export default function Header({ title, showLogo = false, onMenuClick, sidebarOp
             </button>
           )}
           
-          {showLogo && (
+          {showLogo && !sidebarOpen && (
             <div className="md:hidden">
               <Image
                 src="/logo.png"
