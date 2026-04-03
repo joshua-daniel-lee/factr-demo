@@ -58,7 +58,7 @@ export default function Header({ title, showLogo = false, onMenuClick, sidebarOp
         {/* Right: Credit Badge + User Menu */}
         <div className="flex items-center gap-4">
           {/* Credit Balance Badge */}
-          <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-primary/10 to-blue-chill/10 rounded-full">
+          <div className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-primary/10 to-blue-chill/10 rounded-full">
             <Coins className="w-4 h-4 text-primary" />
             <span className="text-sm font-semibold text-bunting">
               {user.credits.remaining}
