@@ -24,7 +24,7 @@ export default function Home() {
     <AppShell title="Dashboard">
       <div className="p-6 md:p-8 space-y-8">
         {/* Welcome Section */}
-        <div className="bg-gradient-to-br from-primary via-blue-chill to-bunting rounded-2xl p-8 text-white relative overflow-hidden h-[160px] flex items-center">
+        <div className="bg-gradient-to-br from-bunting via-primary via-gray-300 to-white rounded-2xl p-8 text-white relative overflow-hidden h-[160px] flex items-center">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
           
           {/* Left: Content (2/3) */}
@@ -42,7 +42,7 @@ export default function Home() {
           {/* Right: Headline Image (1/8) */}
           <div className="hidden md:block absolute right-0 top-0 bottom-0 w-[12.5%] z-10">
             <Image 
-              src="/headline.png"
+              src="/headline.svg"
               alt="Featured journalism"
               fill
               className="object-cover rounded-r-2xl"

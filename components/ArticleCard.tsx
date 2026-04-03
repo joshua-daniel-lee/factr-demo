@@ -67,12 +67,12 @@ export default function ArticleCard({ article, onUnlock }: ArticleCardProps) {
 
         {/* Publisher Logo Badge */}
         {publisher && (
-          <div className="absolute bottom-3 left-3 bg-white/95 backdrop-blur-sm rounded-lg p-2 shadow-sm">
+          <div className="absolute bottom-3 left-3 bg-white/80 backdrop-blur-sm rounded-lg p-2 shadow-sm">
             <Image
               src={publisher.logoUrl}
               alt={publisher.name}
-              width={publisher.id === 'nyt' ? 40 : 32}
-              height={publisher.id === 'nyt' ? 40 : 32}
+              width={40}
+              height={40}
               className="object-contain"
             />
           </div>
