@@ -20,11 +20,11 @@ export default function Header({ title, showLogo = false, onMenuClick, sidebarOp
       <div className="h-full px-6 flex items-center justify-between relative">
         {/* Left: Menu Button + Logo (mobile) */}
         <div className="flex items-center gap-4">
-          {/* Menu Toggle Button */}
+          {/* Menu Toggle Button (Desktop only) */}
           {onMenuClick && (
             <button
               onClick={onMenuClick}
-              className="flex items-center justify-center w-10 h-10 rounded-xl hover:bg-gray-100 transition-colors"
+              className="hidden md:flex items-center justify-center w-10 h-10 rounded-xl hover:bg-gray-100 transition-colors"
               aria-label="Toggle sidebar"
             >
               {sidebarOpen ? (
@@ -35,7 +35,7 @@ export default function Header({ title, showLogo = false, onMenuClick, sidebarOp
             </button>
           )}
           
-          {showLogo && !sidebarOpen && (
+          {showLogo && (
             <div className="md:hidden">
               <Image
                 src="/logo.png"
