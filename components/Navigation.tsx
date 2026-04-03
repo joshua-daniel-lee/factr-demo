@@ -44,9 +44,9 @@ export default function Navigation({ isOpen = false, onClose }: NavigationProps)
 
   return (
     <>
-      {/* Desktop Sidebar */}
+      {/* Sidebar (Mobile & Desktop) */}
       <nav className={`
-        hidden md:flex fixed left-0 top-0 h-full w-[280px] bg-white border-r border-gray-200 flex-col z-30
+        flex fixed left-0 top-0 h-full w-[280px] bg-white border-r border-gray-200 flex-col z-30
         transition-transform duration-300 ease-in-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>

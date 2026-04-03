@@ -23,7 +23,7 @@ export default function AppShell({ children, title }: AppShellProps) {
       {/* Backdrop Overlay */}
       {sidebarOpen && (
         <div
-          className="hidden md:block fixed inset-0 bg-black/20 backdrop-blur-sm z-20 transition-opacity"
+          className="md:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-20 transition-opacity"
           onClick={() => setSidebarOpen(false)}
         />
       )}
