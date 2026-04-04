@@ -1,24 +1,29 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import AppShell from '@/components/AppShell';
 import PageContainer from '@/components/PageContainer';
 import Section from '@/components/Section';
 import Card from '@/components/Card';
 import Badge from '@/components/Badge';
 import { useApp } from '@/contexts/AppContext';
-import { getTransactions, getArticleById } from '@/lib/mockData';
-import { Coins, TrendingUp, ArrowUpRight, ArrowDownRight, Plus } from 'lucide-react';
+import { getTransactions, getArticleById, getCreditPackages } from '@/lib/mockData';
+import { Coins, TrendingUp, ArrowUpRight, ArrowDownRight, Plus, CreditCard } from 'lucide-react';
 import Button from '@/components/Button';
+import PaymentMethodCard from '@/components/PaymentMethodCard';
+import PurchaseCreditsModal from '@/components/PurchaseCreditsModal';
 
 export default function CreditsPage() {
-  const { user, updateCredits } = useApp();
+  const { 
+    user, 
+    purchaseCredits, 
+    addPaymentMethod,
+    removePaymentMethod,
+    setDefaultPaymentMethod 
+  } = useApp();
   const transactions = getTransactions();
-
-  const handleAddCredits = () => {
-    // Simulate adding 25 credits
-    updateCredits(25);
-  };
+  const creditPackages = getCreditPackages();
+  const [showPurchaseModal, setShowPurchaseModal] = useState(false);
 
   // Format date
   const formatDate = (dateString: string) => {
@@ -66,12 +71,28 @@ export default function CreditsPage() {
               <p className="text-sm text-gray-600 mb-4">
                 Get more credits to unlock premium content
               </p>
-              <Button variant="primary" onClick={handleAddCredits} className="w-full">
-                Add 25 Credits
+              <Button variant="primary" onClick={() => setShowPurchaseModal(true)} className="w-full">
+                Buy Credits
               </Button>
             </div>
           </Card>
         </div>
+
+        {/* Payment Methods */}
+        {user.paymentMethods && user.paymentMethods.length > 0 && (
+          <Section title="Payment Methods" className="mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {user.paymentMethods.map((pm) => (
+                <PaymentMethodCard
+                  key={pm.id}
+                  paymentMethod={pm}
+                  onSetDefault={() => setDefaultPaymentMethod(pm.id)}
+                  onRemove={() => removePaymentMethod(pm.id)}
+                />
+              ))}
+            </div>
+          </Section>
+        )}
 
         {/* Transaction History */}
         <Section title="Transaction History">
@@ -134,6 +155,18 @@ export default function CreditsPage() {
             </div>
           )}
         </Section>
+
+        {/* Purchase Credits Modal */}
+        <PurchaseCreditsModal
+          isOpen={showPurchaseModal}
+          onClose={() => setShowPurchaseModal(false)}
+          creditPackages={creditPackages}
+          paymentMethods={user.paymentMethods || []}
+          onPurchase={purchaseCredits}
+          onAddPaymentMethod={addPaymentMethod}
+          onSetDefaultPaymentMethod={setDefaultPaymentMethod}
+          onRemovePaymentMethod={removePaymentMethod}
+        />
       </PageContainer>
     </AppShell>
   );

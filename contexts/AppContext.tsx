@@ -1,8 +1,8 @@
 'use client';
 
 import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react';
-import { User } from '@/types';
-import { getUser } from '@/lib/mockData';
+import { User, PaymentMethod, CardBrand } from '@/types';
+import { getUser, getCreditPackageById } from '@/lib/mockData';
 import { useToast } from '@/components/Toast';
 
 interface AppContextType {
@@ -11,6 +11,16 @@ interface AppContextType {
   updateCredits: (amount: number) => void;
   unlockArticle: (articleId: string, creditCost: number) => boolean;
   refreshUser: () => void;
+  addPaymentMethod: (method: {
+    cardBrand: CardBrand;
+    last4: string;
+    expiryMonth: string;
+    expiryYear: string;
+    holderName: string;
+  }) => void;
+  removePaymentMethod: (id: string) => void;
+  setDefaultPaymentMethod: (id: string) => void;
+  purchaseCredits: (packageId: string, paymentMethodId: string) => Promise<void>;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -62,6 +72,77 @@ export function AppProvider({ children }: { children: ReactNode }) {
     }, 500);
   }, []);
 
+  // Add payment method
+  const addPaymentMethod = useCallback((method: {
+    cardBrand: CardBrand;
+    last4: string;
+    expiryMonth: string;
+    expiryYear: string;
+    holderName: string;
+  }) => {
+    const newPaymentMethod: PaymentMethod = {
+      id: 'pm_' + Date.now(),
+      type: 'card',
+      isDefault: (user.paymentMethods?.length || 0) === 0, // First card is default
+      ...method,
+    };
+
+    setUser((prev) => ({
+      ...prev,
+      paymentMethods: [...(prev.paymentMethods || []), newPaymentMethod],
+    }));
+
+    showToast('Payment method added successfully', 'success');
+  }, [user.paymentMethods, showToast]);
+
+  // Remove payment method
+  const removePaymentMethod = useCallback((id: string) => {
+    setUser((prev) => ({
+      ...prev,
+      paymentMethods: (prev.paymentMethods || []).filter((pm) => pm.id !== id),
+    }));
+
+    showToast('Payment method removed', 'success');
+  }, [showToast]);
+
+  // Set default payment method
+  const setDefaultPaymentMethod = useCallback((id: string) => {
+    setUser((prev) => ({
+      ...prev,
+      paymentMethods: (prev.paymentMethods || []).map((pm) => ({
+        ...pm,
+        isDefault: pm.id === id,
+      })),
+    }));
+
+    showToast('Default payment method updated', 'success');
+  }, [showToast]);
+
+  // Purchase credits
+  const purchaseCredits = useCallback(async (packageId: string, paymentMethodId: string) => {
+    const pkg = getCreditPackageById(packageId);
+    
+    if (!pkg) {
+      showToast('Invalid package selected', 'error');
+      throw new Error('Invalid package');
+    }
+
+    // Simulate payment processing
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    // Add credits
+    setUser((prev) => ({
+      ...prev,
+      credits: {
+        ...prev.credits,
+        remaining: prev.credits.remaining + pkg.credits,
+        total: prev.credits.total + pkg.credits,
+      },
+    }));
+
+    showToast(`Successfully purchased ${pkg.credits} credits!`, 'success');
+  }, [showToast]);
+
   return (
     <AppContext.Provider
       value={{
@@ -70,6 +151,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
         updateCredits,
         unlockArticle,
         refreshUser,
+        addPaymentMethod,
+        removePaymentMethod,
+        setDefaultPaymentMethod,
+        purchaseCredits,
       }}
     >
       {children}

@@ -1,9 +1,10 @@
-import { User, Publisher, Article, Transaction, AnalyticsData, AnalyticsPeriodData, TimePeriod } from '@/types';
+import { User, Publisher, Article, Transaction, AnalyticsData, AnalyticsPeriodData, TimePeriod, CreditPackage, PaymentMethod } from '@/types';
 import userData from '@/data/user.json';
 import publishersData from '@/data/publishers.json';
 import articlesData from '@/data/articles.json';
 import transactionsData from '@/data/transactions.json';
 import analyticsData from '@/data/analytics.json';
+import creditPackagesData from '@/data/creditPackages.json';
 
 // Get current user
 export function getUser(): User {
@@ -119,4 +120,24 @@ export function getAnalytics(period: TimePeriod = 'thisMonth'): AnalyticsData {
 // Get all analytics data
 export function getAllAnalytics(): AnalyticsPeriodData {
   return analyticsData as AnalyticsPeriodData;
+}
+
+// Get all credit packages
+export function getCreditPackages(): CreditPackage[] {
+  return creditPackagesData as CreditPackage[];
+}
+
+// Get credit package by ID
+export function getCreditPackageById(id: string): CreditPackage | undefined {
+  return creditPackagesData.find((p) => p.id === id) as CreditPackage | undefined;
+}
+
+// Get payment methods
+export function getPaymentMethods(): PaymentMethod[] {
+  return (userData.paymentMethods || []) as PaymentMethod[];
+}
+
+// Get default payment method
+export function getDefaultPaymentMethod(): PaymentMethod | undefined {
+  return (userData.paymentMethods || []).find((pm) => pm.isDefault) as PaymentMethod | undefined;
 }
