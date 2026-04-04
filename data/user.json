@@ -8,5 +8,27 @@
     "total": 100,
     "used": 33
   },
-  "plan": "pro"
+  "plan": "pro",
+  "paymentMethods": [
+    {
+      "id": "pm_1",
+      "type": "card",
+      "isDefault": true,
+      "cardBrand": "visa",
+      "last4": "4242",
+      "expiryMonth": "12",
+      "expiryYear": "2027",
+      "holderName": "Danyang Wang"
+    },
+    {
+      "id": "pm_2",
+      "type": "card",
+      "isDefault": false,
+      "cardBrand": "mastercard",
+      "last4": "5555",
+      "expiryMonth": "08",
+      "expiryYear": "2026",
+      "holderName": "Danyang Wang"
+    }
+  ]
 }

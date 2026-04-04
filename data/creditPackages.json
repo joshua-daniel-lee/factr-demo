@@ -1,0 +1,30 @@
+[
+  {
+    "id": "pkg_10",
+    "name": "Starter",
+    "credits": 10,
+    "price": 9.99
+  },
+  {
+    "id": "pkg_25",
+    "name": "Basic",
+    "credits": 25,
+    "price": 19.99,
+    "savings": 20,
+    "popular": true
+  },
+  {
+    "id": "pkg_50",
+    "name": "Pro",
+    "credits": 50,
+    "price": 34.99,
+    "savings": 30
+  },
+  {
+    "id": "pkg_100",
+    "name": "Premium",
+    "credits": 100,
+    "price": 59.99,
+    "savings": 40
+  }
+]

@@ -10,6 +10,7 @@ export interface User {
     used: number;
   };
   plan: 'lite' | 'pro';
+  paymentMethods?: PaymentMethod[];
 }
 
 // Publisher Types
@@ -110,4 +111,29 @@ export interface AnalyticsPeriodData {
   thisMonth: AnalyticsData;
   last3Months: AnalyticsData;
   allTime: AnalyticsData;
+}
+
+// Payment Method Types
+export type CardBrand = 'visa' | 'mastercard' | 'amex' | 'discover';
+export type PaymentMethodType = 'card' | 'paypal';
+
+export interface PaymentMethod {
+  id: string;
+  type: PaymentMethodType;
+  isDefault: boolean;
+  cardBrand?: CardBrand;
+  last4?: string;
+  expiryMonth?: string;
+  expiryYear?: string;
+  holderName?: string;
+}
+
+// Credit Package Types
+export interface CreditPackage {
+  id: string;
+  name: string;
+  credits: number;
+  price: number;
+  savings?: number; // percentage
+  popular?: boolean;
 }
