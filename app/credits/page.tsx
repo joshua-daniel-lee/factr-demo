@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
+import { useRouter } from 'next/navigation';
 import AppShell from '@/components/AppShell';
 import PageContainer from '@/components/PageContainer';
 import Section from '@/components/Section';
@@ -8,22 +9,19 @@ import Card from '@/components/Card';
 import Badge from '@/components/Badge';
 import { useApp } from '@/contexts/AppContext';
 import { getTransactions, getArticleById, getCreditPackages } from '@/lib/mockData';
-import { Coins, TrendingUp, ArrowUpRight, ArrowDownRight, Plus, CreditCard } from 'lucide-react';
-import Button from '@/components/Button';
+import { Coins, ArrowUpRight, ArrowDownRight, ShoppingCart } from 'lucide-react';
 import PaymentMethodCard from '@/components/PaymentMethodCard';
-import PurchaseCreditsModal from '@/components/PurchaseCreditsModal';
+import CreditPackageCard from '@/components/CreditPackageCard';
 
 export default function CreditsPage() {
+  const router = useRouter();
   const { 
     user, 
-    purchaseCredits, 
-    addPaymentMethod,
-    removePaymentMethod,
-    setDefaultPaymentMethod 
+    setDefaultPaymentMethod,
+    removePaymentMethod 
   } = useApp();
   const transactions = getTransactions();
   const creditPackages = getCreditPackages();
-  const [showPurchaseModal, setShowPurchaseModal] = useState(false);
 
   // Format date
   const formatDate = (dateString: string) => {
@@ -66,17 +64,27 @@ export default function CreditsPage() {
 
           <Card variant="default">
             <div className="text-center py-6">
-              <Plus className="w-10 h-10 mx-auto mb-3 text-primary" />
-              <h3 className="font-bold text-bunting mb-2">Need More Credits?</h3>
+              <ShoppingCart className="w-10 h-10 mx-auto mb-3 text-primary" />
+              <h3 className="font-bold text-bunting mb-2">Buy More Credits</h3>
               <p className="text-sm text-gray-600 mb-4">
-                Get more credits to unlock premium content
+                Choose from our credit packages below
               </p>
-              <Button variant="primary" onClick={() => setShowPurchaseModal(true)} className="w-full">
-                Buy Credits
-              </Button>
             </div>
           </Card>
         </div>
+
+        {/* Credit Packages */}
+        <Section title="Buy Credits" className="mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {creditPackages.map((pkg) => (
+              <CreditPackageCard
+                key={pkg.id}
+                package={pkg}
+                onSelect={() => router.push(`/buy-credits?package=${pkg.id}`)}
+              />
+            ))}
+          </div>
+        </Section>
 
         {/* Payment Methods */}
         {user.paymentMethods && user.paymentMethods.length > 0 && (
@@ -155,18 +163,6 @@ export default function CreditsPage() {
             </div>
           )}
         </Section>
-
-        {/* Purchase Credits Modal */}
-        <PurchaseCreditsModal
-          isOpen={showPurchaseModal}
-          onClose={() => setShowPurchaseModal(false)}
-          creditPackages={creditPackages}
-          paymentMethods={user.paymentMethods || []}
-          onPurchase={purchaseCredits}
-          onAddPaymentMethod={addPaymentMethod}
-          onSetDefaultPaymentMethod={setDefaultPaymentMethod}
-          onRemovePaymentMethod={removePaymentMethod}
-        />
       </PageContainer>
     </AppShell>
   );
