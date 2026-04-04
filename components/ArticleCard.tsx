@@ -145,7 +145,7 @@ export default function ArticleCard({ article, onUnlock }: ArticleCardProps) {
           ) : (
             <Button 
               variant="outline" 
-              className="flex items-center gap-2 text-sm px-4 py-2"
+              className="flex items-center justify-center gap-2 text-sm px-4 py-2"
             >
               Read Now
             </Button>
