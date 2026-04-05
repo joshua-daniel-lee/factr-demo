@@ -80,7 +80,7 @@ export default function PaymentMethodCard({
               <Button
                 variant="outline"
                 onClick={onSetDefault}
-                className="text-xs px-3 py-1.5"
+                className="text-xs px-3 py-1.5 whitespace-nowrap"
               >
                 Set as Default
               </Button>
@@ -92,7 +92,7 @@ export default function PaymentMethodCard({
           <Button
             variant="outline"
             onClick={onRemove}
-            className="text-red-600 hover:text-red-700 hover:bg-red-50 px-2 py-1.5"
+            className="text-red-600 hover:text-red-700 hover:bg-red-50 px-3 py-1.5"
           >
             <Trash2 className="w-4 h-4" />
           </Button>
