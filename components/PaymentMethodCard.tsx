@@ -80,7 +80,7 @@ export default function PaymentMethodCard({
               <Button
                 variant="outline"
                 onClick={onSetDefault}
-                className="text-xs !px-3 !py-1.5 whitespace-nowrap !w-32 !bg-blue-700 !text-white hover:!bg-blue-800 !border-blue-700 !rounded-lg"
+                className="text-xs px-3 py-1.5"
               >
                 Set as Default
               </Button>
