@@ -91,10 +91,6 @@ export default function ASCIIPufferfish() {
     const animate = () => {
       const rect = canvas.getBoundingClientRect();
       ctx.clearRect(0, 0, rect.width, rect.height);
-      
-      // Dark background
-      ctx.fillStyle = '#1a202c';
-      ctx.fillRect(0, 0, rect.width, rect.height);
 
       // Set font
       ctx.font = `${fontSize}px monospace`;

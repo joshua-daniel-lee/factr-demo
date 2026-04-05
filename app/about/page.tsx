@@ -13,9 +13,9 @@ export default function AboutPage() {
       <PageContainer>
         {/* Hero Section with ASCII Animation */}
         <div className="mb-12">
-          <Card variant="default" className="bg-gradient-to-br from-bunting to-primary p-0 overflow-hidden">
+          <div className="my-8">
             <ASCIIPufferfish />
-          </Card>
+          </div>
           <div className="text-center mt-8">
             <h1 className="text-4xl md:text-5xl font-bold text-bunting mb-4 font-newsreader">
               About Factr Demo
