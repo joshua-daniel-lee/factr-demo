@@ -80,23 +80,13 @@ export default function PaymentMethodCard({
               <Button
                 variant="outline"
                 onClick={onSetDefault}
-                className="text-xs px-3 py-1.5 whitespace-nowrap w-32 bg-blue-700 text-white hover:bg-blue-800 border-blue-700"
+                className="text-xs !px-3 !py-1.5 whitespace-nowrap !w-32 !bg-blue-700 !text-white hover:!bg-blue-800 !border-blue-700 !rounded-lg"
               >
                 Set as Default
               </Button>
             )
           )}
         </div>
-
-        {!paymentMethod.isDefault && onRemove && (
-          <Button
-            variant="outline"
-            onClick={onRemove}
-            className="text-xs px-3 py-1.5 w-32 bg-blue-200 text-blue-700 hover:bg-blue-300 border-blue-200"
-          >
-            <Trash2 className="w-4 h-4" />
-          </Button>
-        )}
       </div>
     </Card>
   );
