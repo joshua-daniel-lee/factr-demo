@@ -28,65 +28,140 @@ export default function ASCIIPufferfish() {
     setCanvasSize();
     window.addEventListener('resize', setCanvasSize);
 
-    // Pufferfish ASCII art frames
+    // Detailed 3D Pufferfish ASCII art frames
     const frames = [
       // Frame 1 - Normal
       `
-                    ___
-              ___---   ---___
-          _--                --_
-        _-         ><>           -_
-      _-        ><(((°>            -_
-     /-           ><>               -\\
-    |  ><>    pufferfish    ><>      |
-    |                                 |
-     \\-         swimming           -/
-      -_           here           _-
-        -_                      _-
-          --__              __--
-              ---_______---
+                                    .':cccccc:'.
+                               .:cldkOOOOOOOOOkdlc:.
+                           .:lxkOOOOOOOOOOOOOOOOOOkxl:.
+                        .cxkOOOOOOOOOOOOOOOOOOOOOOOOOkxc.
+                     .cxOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOxc.
+                   .lkOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkl.
+                 .lkOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkl.
+                :kOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOk:
+               :kOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOk:
+              cOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOc
+             :OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO:
+            .kOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOk.
+            lOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOl
+           .OOOOOOOO0000000OOOOOOOOOOOOOOOOOOOOOOkxddddxkOOOOOOO.
+           lOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOxc'      'cxOOOOOl
+           kOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkc'          'ckOOOk
+          .OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkc'              'ckOO.
+          .OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkc'     .@@.         'ckO.
+          .OOOOOOOOOOOOOOOOOOOOOOOOOOOOOx:       .@@.           :k.
+          .OOOOOOOOOOOOOOOOOOOOOOOOOOOOx:         ''            :k.
+          .OOOOOOOOOOOOOOOOOOOOOOOOOOOOx:.                     :kO.
+          .OOOOOOOOOOOOOOOOOOOOOOOOOOOOOkc'.                .'ckOO.
+          'kOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkc'            'ckOOOOk'
+           lOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkc'        'ckOOOOOOl
+           .OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkc'    'ckOOOOOOO.
+            lOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkc''ckOOOOOOOOl
+            .kOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOk.
+             :OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO:
+             'xOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOx'
+              .dOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOd.
+               .oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOo.
+                 :xOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOx:
+                  .lkOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkl.
+                    .cxOOOOOOOOOOOOOOOOOOOOOOOOOOOxc.
+                      .:dkOOOOOOOOOOOOOOOOOOOOkd:.
+                         .:ldkOOOOOOOOOOOOkdl:.
+                             .':cldxxxdlc:'.
       `,
-      // Frame 2 - Slightly puffed
+      // Frame 2 - Puffing up
       `
-                    ___
-              ___---   ---___
-          _--                --_
-        _-         ><>           -_
-      _-        ><(((°>            -_
-     /-           ><>               -\\
-    |  ><> ><  pufferfish  >< ><>    |
-    |   ><                    ><     |
-     \\-    ><   swimming   ><     -/
-      -_      ><  here  ><        _-
-        -_                      _-
-          --__              __--
-              ---_______---
+                                 .':ccccccccc:'.
+                            .:cloxkOOOOOOOOOOkxolc:.
+                        .':ldkOOOOOOOOOOOOOOOOOOOkdl:'.
+                     .:oxkOOOOOOOOOOOOOOOOOOOOOOOOOOkxo:.
+                   .lkOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkl.
+                 .lkOOOOOO#####OOOOOOOOOOOOOOOOOOOOOOOOOkl.
+               .:kOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOk:.
+              .lOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOl.
+             'xOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOx'
+            .dOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOd.
+           .xOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOx.
+          'kOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOk'
+         .kOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOk.
+        .dOOOOOOOO000000000OOOOOOOOOOOOOOOOOOOOOOxddddddxkOOOOOOOd.
+        :OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO0d:.      .:dOOOOOO:
+       .xOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOx:.          .:xOOOOx.
+       'OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO0l.    .####.   .l0OOO'
+       .OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO0l.    .####.    .l0OO.
+       .OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOx:.     ....    .:xOOO.
+       .OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOd:.        .:dOOOOOO.
+       .xOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOxc'..''cxOOOOOOOOx.
+       'kOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOk'
+        dOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOd
+        .kOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOk.
+         'xOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOx'
+          .dOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOd.
+           .oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOo.
+             :xOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOx:
+              .lkOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkl.
+                'oxOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOxo'
+                  .:dkOOOOOOOOOOOOOOOOOOOOOOOOOOkd:.
+                     .:ldkOOOOOOOOOOOOOOOOOkdl:.
+                         .':clodxxxxxxdolc:'.
       `,
-      // Frame 3 - More puffed
+      // Frame 3 - Fully puffed
       `
-                    ___
-              ___---   ---___
-          _--                --_
-        _-      >< ><>  ><        -_
-      _-     ><  ><(((°> ><         -_
-     /-        ><  ><>  ><           -\\
-    | ><><  ><  pufferfish  >< ><><   |
-    |  ><  ><                ><  ><   |
-     \\- ><   ><  swimming  ><   >< -/
-      -_   ><   ><  here ><   ><   _-
-        -_      ><      ><        _-
-          --__              __--
-              ---_______---
+                              ..':cccccccccc:'..
+                         .':ldxkOOOOOOOOOOOOkxdl:'.
+                     .':oxkOOOOOOOOOOOOOOOOOOOOOkxo:'.
+                  .:dkOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkd:.
+                'lkOOOOOOOO########OOOOOOOOOOOOOOOOOOOOkl'
+              .ckOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkc.
+            .ckOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkc.
+           :kOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOk:
+         .dOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOd.
+        .xOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOx.
+       .dOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOd.
+      .xOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOx.
+     .dOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOd.
+     lOOOOOOOOOOO00000000000OOOOOOOOOOOOOOOOOOOOOOOkxddddddxkOOOOOOOl
+    'OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO0xc'.      .'cxOOOOOO'
+    cOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkl.    ######.  .lkOOOc
+   .OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO0l.    ######.   .l0OOO.
+   .OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO0l.     ......    .l0OOO.
+   .OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkc.              .ckOOOO.
+   'OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOxc'.      .':xOOOOOOO'
+    cOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkdl::ldkOOOOOOOOOc
+    'kOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOk'
+     lOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOl
+     .dOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOd.
+      .xOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOx.
+       .dOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOd.
+        .xOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOx.
+         .dOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOd.
+           :kOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOk:
+            .ckOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkc.
+              .ckOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkc.
+                'lkOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkl'
+                  .:dkOOOOOOOOOOOOOOOOOOOOOOOOOOkd:.
+                     .':oxkOOOOOOOOOOOOOOOOkxo:'.
+                         .':ldxkOOOOOOkxdl:'.
+                              ..'::::'.
       `
     ];
 
     let frameIndex = 0;
     let time = 0;
-    const fontSize = 12;
-    const lineHeight = 14;
+    const fontSize = 10;
+    const lineHeight = 11;
 
-    // Colors from your brand
-    const colors = ['#2A4365', '#3182CE', '#63B3ED']; // bunting, primary, blue-chill
+    // Enhanced color palette for depth
+    const colors = [
+      '#1a365d', // darkest blue
+      '#2A4365', // bunting
+      '#2c5282', // darker primary
+      '#3182CE', // primary
+      '#4299e1', // lighter blue
+      '#63B3ED', // blue-chill
+      '#90cdf4', // lightest blue
+    ];
 
     const animate = () => {
       const rect = canvas.getBoundingClientRect();
