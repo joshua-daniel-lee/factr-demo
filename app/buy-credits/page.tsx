@@ -181,7 +181,7 @@ function BuyCreditsContent() {
                   variant="primary"
                   onClick={handlePurchase}
                   disabled={!selectedPaymentMethodId || isProcessing}
-                  className="w-full"
+                  className="w-full flex items-center justify-center whitespace-nowrap"
                 >
                   {isProcessing ? (
                     <>

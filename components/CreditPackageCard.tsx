@@ -88,7 +88,7 @@ export default function CreditPackageCard({
           {onSelect && (
             <Button 
               variant={selected ? 'outline' : 'primary'}
-              className={`mt-6 w-full ${
+              className={`mt-6 px-6 py-2 whitespace-nowrap ${
                 selected ? 'bg-white text-primary hover:bg-white/90' : ''
               }`}
             >
