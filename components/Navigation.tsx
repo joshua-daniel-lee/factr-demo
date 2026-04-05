@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { Home, Compass, BookOpen, BarChart3, Wallet } from 'lucide-react';
+import { Home, Compass, BookOpen, BarChart3, Wallet, Info } from 'lucide-react';
 
 interface NavItem {
   label: string;
@@ -23,6 +23,7 @@ const navItems: NavItem[] = [
   { label: 'Library', href: '/library', icon: BookOpen },
   { label: 'Analytics', href: '/analytics', icon: BarChart3 },
   { label: 'Credits', href: '/credits', icon: Wallet },
+  { label: 'About', href: '/about', icon: Info },
 ];
 
 export default function Navigation({ isOpen = false, onClose }: NavigationProps) {
