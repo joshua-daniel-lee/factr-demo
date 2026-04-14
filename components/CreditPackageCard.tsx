@@ -30,7 +30,7 @@ export default function CreditPackageCard({
       >
         {/* Popular Badge */}
         {pkg.popular && (
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+          <div className="absolute top-3 left-3">
             <Badge variant="primary" size="sm" className="flex items-center gap-1">
               <TrendingUp className="w-3 h-3" />
               Most Popular
@@ -40,7 +40,7 @@ export default function CreditPackageCard({
 
         {/* Savings Badge */}
         {pkg.savings && (
-          <div className="absolute -top-3 right-3">
+          <div className="absolute top-3 right-3">
             <Badge variant="success" size="sm">
               Save {pkg.savings}%
             </Badge>
