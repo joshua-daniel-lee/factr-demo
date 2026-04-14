@@ -18,7 +18,7 @@ interface NavigationProps {
 }
 
 const navItems: NavItem[] = [
-  { label: 'Dashboard', href: '/', icon: Home },
+  { label: 'Dashboard', href: '/dashboard', icon: Home },
   { label: 'Discover', href: '/discover', icon: Compass },
   { label: 'Library', href: '/library', icon: BookOpen },
   { label: 'Analytics', href: '/analytics', icon: BarChart3 },
@@ -29,8 +29,8 @@ export default function Navigation({ isOpen = false, onClose }: NavigationProps)
   const pathname = usePathname();
 
   const isActive = (href: string) => {
-    if (href === '/') {
-      return pathname === '/';
+    if (href === '/dashboard') {
+      return pathname === '/dashboard';
     }
     return pathname.startsWith(href);
   };
@@ -52,7 +52,7 @@ export default function Navigation({ isOpen = false, onClose }: NavigationProps)
       `}>
         {/* Logo */}
         <div className="p-6 border-b border-gray-200">
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link href="/dashboard" className="flex items-center gap-3 group">
             <Image
               src="/logo.png"
               alt="FactrAI Logo"
