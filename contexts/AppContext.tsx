@@ -54,9 +54,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       // Deduct credits
       updateCredits(-creditCost);
       
-      // Show success toast
-      showToast(`Article unlocked! ${creditCost} credits used`, 'success');
-      
+      // Success feedback handled by calling component
       return true;
     },
     [user.credits.remaining, updateCredits, showToast]
