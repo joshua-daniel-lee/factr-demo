@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Clock, TrendingUp, Lock, CheckCircle, Coins } from 'lucide-react';
 import { Article } from '@/types';
 import { getPublisherById, isArticleUnlocked } from '@/lib/mockData';
@@ -93,9 +94,11 @@ export default function ArticleCard({ article, onUnlock }: ArticleCardProps) {
         )}
 
         {/* Title */}
-        <h3 className="text-lg font-bold text-bunting mb-2 font-newsreader line-clamp-2 group-hover:text-primary transition-colors">
-          {article.title}
-        </h3>
+        <Link href={`/article/${article.id}`}>
+          <h3 className="text-lg font-bold text-bunting mb-2 font-newsreader line-clamp-2 group-hover:text-primary transition-colors cursor-pointer">
+            {article.title}
+          </h3>
+        </Link>
 
         {/* Excerpt */}
         <p className="text-sm text-gray-600 mb-4 line-clamp-2 flex-1">
@@ -134,21 +137,24 @@ export default function ArticleCard({ article, onUnlock }: ArticleCardProps) {
           </div>
           
           {!unlocked ? (
-            <Button 
-              variant="primary" 
-              onClick={handleUnlock}
-              className="flex items-center gap-2 text-sm px-4 py-2"
-            >
-              <Lock className="w-4 h-4" />
-              Unlock
-            </Button>
+            <Link href={`/article/${article.id}`}>
+              <Button 
+                variant="primary" 
+                className="flex items-center gap-2 text-sm px-4 py-2"
+              >
+                <Lock className="w-4 h-4" />
+                Read Article
+              </Button>
+            </Link>
           ) : (
-            <Button 
-              variant="outline" 
-              className="flex items-center justify-center gap-2 text-sm px-4 py-2"
-            >
-              Read Now
-            </Button>
+            <Link href={`/article/${article.id}`}>
+              <Button 
+                variant="outline" 
+                className="flex items-center justify-center gap-2 text-sm px-4 py-2"
+              >
+                Read Now
+              </Button>
+            </Link>
           )}
         </div>
       </div>
